@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Navbar from './Navbar/Navbar';
 import HomePage from './pages/HomePage/HomePage';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import SingleMoviePage from './pages/SingleMoviePage/SingleMoviePage';
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />;
+      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/movies" element={<MoviesPage />}></Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage />}>
+          <Route path=":id" element={<SingleMoviePage />} />
+        </Route>
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
