@@ -33,7 +33,7 @@ const MovieDetailsCastPage = () => {
           alt={name}
         />
       </div>
-      <div>
+      <div className={css.text_wrapper}>
         <p className={css.title}>Name</p>
         <p className={css.text}>{name}</p>
         <p className={css.title}>Charachter</p>

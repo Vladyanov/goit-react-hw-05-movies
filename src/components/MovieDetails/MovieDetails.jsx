@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link, useParams, useNavigate, Outlet } from 'react-router-dom';
+import {
+  Link,
+  useParams,
+  useNavigate,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import { getMovieDetails } from 'components/Modules/moviesAPI';
 
 import css from './movie-details.module.scss';
@@ -9,7 +15,11 @@ const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const goBack = useCallback(() => navigate(-1), [navigate]);
+  const location = useLocation();
+
+  const from = location.state?.from || '/';
+
+  const goBack = useCallback(() => navigate(from), [from, navigate]);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -45,19 +55,25 @@ const MovieDetails = () => {
             alt=""
           />
         </div>
-        <p>
-          {movieDetails.original_title} ({releaseDate[0]})
-        </p>
-        <p>User score: {userScore}%</p>
-        <p>Overview</p>
-        <p>{movieDetails.overview}</p>
-        <p>Genres</p>
-        <p>{genres.join(', ')}</p>
+        <div className={css.text_wrapper}>
+          <p className={css.title}>
+            {movieDetails.original_title} ({releaseDate[0]})
+          </p>
+          <p>User score: {userScore}%</p>
+          <p className={css.title}>Overview</p>
+          <p>{movieDetails.overview}</p>
+          <p className={css.title}>Genres</p>
+          <p>{genres.join(', ')}</p>
+        </div>
       </div>
       <div className={css.additoinal_info}>
-        <p>Additional information</p>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <p className={css.title}>Additional information</p>
+        <Link className={css.link} to="cast" state={{ from }}>
+          Cast
+        </Link>
+        <Link className={css.link} to="reviews" state={{ from }}>
+          Reviews
+        </Link>
       </div>
       <Outlet />
     </>

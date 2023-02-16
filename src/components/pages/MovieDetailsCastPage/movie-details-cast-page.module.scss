@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  margin-left: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.text_wrapper {
+  margin-left: 20px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 700;
+}

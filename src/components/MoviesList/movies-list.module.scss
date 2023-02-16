@@ -1,12 +1,18 @@
 .item {
+  display: block;
+  margin-left: 20px;
+  padding: 3px;
+  padding-left: 10px;
   text-decoration: none;
   font-size: 20px;
   color: #0910d5;
-  display: block;
-  padding: 3px;
 
   &:active {
     font-weight: 700;
+  }
+
+  &:first-child {
+    margin-top: 10px;
   }
 }
 
