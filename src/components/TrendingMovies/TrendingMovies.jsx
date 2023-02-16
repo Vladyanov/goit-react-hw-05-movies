@@ -9,17 +9,16 @@ const TrendingMovies = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchMovies = async () => {
       try {
         const data = await trendingMovies();
-        console.log(data.results);
         setItems(data.results);
       } catch (error) {
         setError(error.message);
       }
     };
-    fetchImages();
-  }, [setItems]);
+    fetchMovies();
+  }, []);
 
   return (
     <>
