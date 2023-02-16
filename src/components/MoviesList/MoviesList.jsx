@@ -1,9 +1,9 @@
-import css from './trending-movies-list.module.scss';
+import css from './movies-list.module.scss';
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const TrendingMoviesList = ({ items }) => {
+const MoviesList = ({ items }) => {
   const location = useLocation();
 
   const elements = items.map(({ id, title }) => (
@@ -19,13 +19,13 @@ const TrendingMoviesList = ({ items }) => {
   return <ul className={css.gallery}>{elements}</ul>;
 };
 
-export default memo(TrendingMoviesList);
+export default memo(MoviesList);
 
-TrendingMoviesList.defaultProps = {
+MoviesList.defaultProps = {
   items: [],
 };
 
-TrendingMoviesList.propTypes = {
+MoviesList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import SearchMoviesList from './SearchMoviesList/SearchMoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import Searchbar from 'components/Searchbar/Searchbar';
 
 import { searchMovies } from '../Modules/moviesAPI';
@@ -19,8 +19,8 @@ const SearchMovies = () => {
         try {
           const data = await searchMovies(search);
           setItems(data.results);
-        } catch (error) {
-          setError(error.message);
+        } catch ({ response }) {
+          setError(response.data.message);
         }
       };
       fetchMovies();
@@ -38,7 +38,7 @@ const SearchMovies = () => {
   return (
     <>
       <Searchbar onSubmit={searchMoviesByTitle} />
-      <SearchMoviesList items={items} />
+      <MoviesList items={items} />
       {error && <p>Error: {error}</p>}
     </>
   );

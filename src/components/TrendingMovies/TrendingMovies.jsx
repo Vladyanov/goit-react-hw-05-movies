@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import TrendingMoviesList from './TrendingMoviesList/TrendingMoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 import { trendingMovies } from '../Modules/moviesAPI';
 
@@ -22,7 +22,7 @@ const TrendingMovies = () => {
 
   return (
     <>
-      <TrendingMoviesList items={items} />
+      <MoviesList items={items} />
       {error && <p>Error: {error}</p>}
     </>
   );

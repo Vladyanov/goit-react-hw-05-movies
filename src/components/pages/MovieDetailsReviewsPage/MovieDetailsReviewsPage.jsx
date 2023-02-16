@@ -30,7 +30,12 @@ const MovieDetailsReviewsPage = () => {
     </li>
   ));
 
-  return <ul>{elements}</ul>;
+  const resElem = elements.length ? (
+    <ul>{elements}</ul>
+  ) : (
+    <p>We don`t have reviews for this movie</p>
+  );
+  return resElem;
 };
 
 export default MovieDetailsReviewsPage;
